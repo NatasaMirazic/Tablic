@@ -31,7 +31,7 @@ npm start
 
 ## Demo
 
-You can find working demo here: https://clever-khorana-a700a1.netlify.app/
+You can find working demo here: https://stupefied-hamilton-7ea875.netlify.app/
 
 ## Examples
 
