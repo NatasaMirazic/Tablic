@@ -1,0 +1,22 @@
+$purple-color: #666699;
+
+@mixin human-points-info($position-value, $left-value, $bottom-value) {
+  position: $position-value;
+  left: $left-value;
+  bottom: $bottom-value;
+}
+
+@mixin comp-points-info($position-value, $left-value, $top-value) {
+  position: $position-value;
+  left: $left-value;
+  top: $top-value;
+}
+
+%hr {
+  width: 8%;
+  position: absolute;
+  left: 4%;
+  height: 1px;
+  border: none;
+  background-color: $purple-color;
+}
