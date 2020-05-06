@@ -147,13 +147,13 @@ function MainGame() {
     if (combinations[0].cards.length === tableCards.length) {
       setComputerTables(prevState => prevState + 1)
     }
+    setComputerPoints((prevPoints) => prevPoints + points);
+    setIsHumanLastThrowing(false);
     if ((computerPoints + points + computerTables) > 100) {
       setTimeout(() => {
         setIsEndGameModalOpened(true);
       }, 1000);
     }
-    setComputerPoints((prevPoints) => prevPoints + points);
-    setIsHumanLastThrowing(false);
   }
 
   const computerPickUpCards = (card, tableCards) => {
@@ -212,10 +212,10 @@ function MainGame() {
     })]));
     setHumanCardsTaken([...selectedCards, image, ...humanCardsTaken]);
     const points = serviceGame.getPointsOfCombination(image, selectedCards);
+    setHumanPoints((prevPoints) => prevPoints + points);
     if ((humanPoints + points + humanTables) > 100) {
       setIsEndGameModalOpened(true);
     }
-    setHumanPoints((prevPoints) => prevPoints + points);
     if (selectedCards.length === tableCards.length) {
       setHumanTables(prevState => prevState + 1)
     }
@@ -327,7 +327,7 @@ function MainGame() {
         computerPoints={computerPoints}
         continueGame={continueGame}
       />
-      {(humanPoints > 100) ?
+      {((humanPoints + humanTables) > 100) ?
         <div>
           <InformationModal 
             isOpenModal={isEndGameModalOpened}
@@ -337,7 +337,7 @@ function MainGame() {
           />
         </div> :
         <div>
-          {(computerPoints > 100) ?
+          {((computerPoints + computerTables) > 100) ?
           <div>
             <InformationModal 
               isOpenModal={isEndGameModalOpened}
